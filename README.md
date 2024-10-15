@@ -22,7 +22,7 @@ Une animation est intégrée pour montrer ou cacher les rappels terminés, renda
 
 - Gestion des données avec SwiftData :
 
-Le modèle de données TaskModel permet de stocker et de récupérer des rappels. Chaque tâche est définie par un nom et un état (terminée ou non).
+Le modèle de données TaskModel permet de stocker et de récupérer des rappels. Tandis que le fichier TaskController s'occupera de toutes les opérations "CRUD".
 
 - Interface utilisateur intuitive :
 
