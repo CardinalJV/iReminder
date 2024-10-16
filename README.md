@@ -9,7 +9,8 @@ iReminder est une application de gestion de rappels qui permet aux utilisateurs 
 
 ## Fonctionnalités principales
 
-- Ajouter des rappels : 
+- Ajouter des rappels :
+
 Les utilisateurs peuvent ajouter de nouvelles tâches via une interface simple.
 
 - Marquer les rappels comme terminés :
