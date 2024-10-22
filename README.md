@@ -5,7 +5,7 @@
 
 # iReminder 
 
-iReminder est une application de gestion de rappels qui permet aux utilisateurs de créer, suivre et compléter leurs tâches. L'application utilise SwiftData pour gestion des rappels en locales(Création, modification et suppression).
+iReminder est une application de gestion de rappels qui permet aux utilisateurs de créer, suivre et compléter leurs tâches. L'application utilise SwiftData pour la gestion des rappels en locales(Création, modification et suppression).
 
 ## Fonctionnalités principales
 
