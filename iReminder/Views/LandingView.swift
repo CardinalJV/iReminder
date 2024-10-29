@@ -14,8 +14,6 @@ struct LandingView: View {
   let taskController = TaskController()
   
   @State private var showAddNewTaskView = false
-  @State private var showTaskCompleted = false
-  @State private var showAnimation = false
   
   var body: some View {
     VStack(spacing: 20){
@@ -57,7 +55,6 @@ struct LandingView: View {
       }
     }
     .onAppear{
-      self.showAnimation.toggle()
       self.taskController.context = self.context
       self.taskController.fetchTasks()
     }
