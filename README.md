@@ -21,9 +21,9 @@ Les utilisateurs peuvent ajouter de nouvelles tâches via une interface simple.
 
 Un rappel peut être marqué comme complété, avec la possibilité de masquer ou d'afficher les tâches terminées.
 
-- Animation de rotation :
+- Animation :
 
-Une animation est intégrée pour montrer ou cacher les rappels terminés, rendant l'expérience utilisateur plus dynamique.
+Les rappels proposent une animation lors de l'apparition et de la suppression.
 
 - Gestion des données avec SwiftData :
 
@@ -31,12 +31,12 @@ Le modèle de données TaskModel permet de stocker et de récupérer des rappels
 
 - Interface utilisateur intuitive :
 
-L'application adopte une conception simple avec des boutons d'ajout de tâche facilement accessibles et une liste de rappels non complétés qui apparaît en haut de l'écran.
+L'application adopte une conception simple avec les rappels apparaissant au centre de l'écran. Un tri est effectué automatiquement pour placer en haut les rappels non complétés.
 
 ## Détails techniques
 
 - Langages : Swift
-- Frameworks : SwiftUI / SwiftData
+- Frameworks : SwiftUI / SwiftData / WidgetKit
 - Architecture : MVC
 - Version iOS : iOS 17
 
