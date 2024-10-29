@@ -8,48 +8,54 @@
 import SwiftUI
 
 struct AddNewTaskView: View {
-  @Environment(\.dismiss) private var dismiss
   
+  @Environment(\.dismiss) private var dismiss
   let taskController: TaskController
   
-  @State private var text = ""
+  @State var text = ""
   
-    var body: some View {
-      ZStack{
-        Color(.systemGray6)
-          .ignoresSafeArea()
-        VStack{
-          TextField("Ajouter un nom", text: self.$text)
-            .padding()
-            .frame(height: 45)
-            .background(.white)
-            .foregroundStyle(.black)
-            .clipShape(.rect(cornerRadius: 10))
-          Button("Ajouter") {
-            if !self.text.isEmpty {
-              self.taskController.addTask(task: TaskModel(name: self.text))
-              self.dismiss()
-            }
-          }
-          .padding()
-          .frame(width: 375, height: 45)
-          .foregroundStyle(.white)
-          .background(.blue)
-          .clipShape(.rect(cornerRadius: 10))
-          .bold()
-          Spacer()
-        }
-        .padding()
+  var body: some View {
+    VStack(spacing: 20){
+      Button {
+        self.dismiss()
+      } label: {
+        RoundedRectangle(cornerRadius: 5)
+          .frame(width: 50, height: 5, alignment: .top)
       }
-      .onSubmit {
+      .buttonStyle(.plain)
+      TextField("Ajouter un nom", text: self.$text)
+        .padding()
+        .font(.headline)
+        .frame(width: 370, height: 50)
+        .background(
+          RoundedRectangle(cornerRadius: 10)
+            .stroke(.black, lineWidth: 3)
+        )
+        .multilineTextAlignment(.center)
+      Button {
         if !self.text.isEmpty {
-          self.taskController.addTask(task: TaskModel(name: self.text))
+          self.taskController.add(this: TaskModel(name: self.text))
           self.dismiss()
         }
+      } label: {
+        Text("Ajouter")
+          .fontDesign(.monospaced)
+          .font(.headline)
+          .foregroundStyle(.white)
+          .bold()
+          .frame(width: 375, height: 50)
+          .background(.black)
+          .clipShape(RoundedRectangle(cornerRadius: 10))
       }
     }
+    .padding()
+    .fontDesign(.monospaced)
+    .tint(.black)
+    .onSubmit {
+      if !self.text.isEmpty {
+        self.taskController.add(this: TaskModel(name: self.text))
+        self.dismiss()
+      }
+    }
+  }
 }
-//
-//#Preview {
-//  AddNewTaskView(taskManager: <#TaskManager#>, text: .constant(""))
-//}
