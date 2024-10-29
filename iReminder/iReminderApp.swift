@@ -12,7 +12,7 @@ import SwiftData
 struct iReminderApp: App {
     var body: some Scene {
         WindowGroup {
-            LandingView()
+          LandingView()
         }
         .modelContainer(for: TaskModel.self)
     }
