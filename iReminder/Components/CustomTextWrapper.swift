@@ -46,8 +46,8 @@ struct CustomTextWrapper: View {
       } else {
         Text(self.task.name)
           .onTapGesture {
-            isEditing = true  // Passe en mode édition
-            isTextFieldFocused = true  // Active le focus pour le TextField
+            isEditing = true
+            isTextFieldFocused = true
           }
           .font(.system(size: 20, weight: .semibold, design: .monospaced))
           .tracking(-0.75)
