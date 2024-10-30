@@ -72,7 +72,7 @@ struct TaskItem: View {
           .buttonStyle(.plain)
           /* - */
           /* Task name field */
-          CustomTextWrapper(task: self.task)
+          CustomTextWrapper(taskController: self.taskController, task: self.task)
           /* - */
           Spacer()
         }

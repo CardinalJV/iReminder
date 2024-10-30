@@ -1,13 +1,15 @@
-//
-//  CustomTextWrapper.swift
-//  iReminder
-//
-//  Created by Jessy Viranaiken on 29/10/2024.
-//
+  //
+  //  CustomTextWrapper.swift
+  //  iReminder
+  //
+  //  Created by Jessy Viranaiken on 29/10/2024.
+  //
 
 import SwiftUI
 
 struct CustomTextWrapper: View {
+  
+  let taskController: TaskController
   
   @State var task: TaskModel
   @State private var isEditing = false
@@ -23,12 +25,15 @@ struct CustomTextWrapper: View {
             isEditing = false
             if self.text != self.task.name {
               self.task.name = self.text
+              self.taskController.updateTasks()
             }
           }
+          // Changement de focus
           .onChange(of: isTextFieldFocused) {
             if !isTextFieldFocused {
               isEditing = false
               self.task.name = self.text
+              self.taskController.updateTasks()
             }
           }
           .font(.system(size: 20, weight: .semibold, design: .monospaced))
@@ -69,6 +74,6 @@ struct CustomTextWrapper: View {
   }
 }
 
-//#Preview {
-//    CustomTextWrapper()
-//}
+  //#Preview {
+  //    CustomTextWrapper()
+  //}
