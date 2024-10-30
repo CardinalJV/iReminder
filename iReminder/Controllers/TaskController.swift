@@ -22,7 +22,8 @@ class TaskController{
       try context!.save()
       fetchTasks()
     } catch {
-      print("Erreur lors de la sauvegarde")
+      print(error)
+      print("Erreur lors de l'ajout")
     }
   }
     //  Read
@@ -33,6 +34,16 @@ class TaskController{
       self.tasks = fetchedTasks
     } catch {
       print("Erreur")
+    }
+  }
+    //  Update
+  func updateTasks() {
+    do {
+      try context!.save()
+      fetchTasks()
+    } catch {
+      print(error)
+      print("Erreur lors de la sauvegarde")
     }
   }
     //  Delete
