@@ -45,3 +45,7 @@ L'application adopte une conception simple avec les rappels apparaissant au cent
 ## Installation
 
 Clonez le projet depuis le dépôt GitHub, puis ouvrez-le dans Xcode. Assurez-vous que vous utilisez la dernière version de Xcode compatible avec Swift 5, SwiftUI et SwiftData pour éviter tout problème de compatibilité.
+
+## Crédits 
+
+Je me suis fortement inspiré de l'un des travaux de Shubham Singh pour le design des tâches.
