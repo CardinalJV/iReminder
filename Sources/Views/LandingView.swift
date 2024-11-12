@@ -10,7 +10,7 @@ import SwiftData
 
 struct LandingView: View {
   
-  @Environment(\.modelContext) private var context: ModelContext
+  @Environment(\.modelContext) var context: ModelContext
   let taskController = TaskController()
   
   @State private var showAddNewTaskView = false
