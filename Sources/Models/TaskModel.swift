@@ -10,11 +10,11 @@ import SwiftData
 
 @Model
 class TaskModel: Identifiable {
-  var id = UUID()
+  var id: UUID = UUID()
   var name: String
-  var isCompleted = false
+  var isCompleted: Bool = false
   
-  init(name: String, isCompleted: Bool? = nil) {
+  init(name: String) {
     self.name = name
   }
 }

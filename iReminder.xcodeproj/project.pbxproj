@@ -6,19 +6,92 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A73F2E432CD297620082F8E8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73F2E422CD297620082F8E8 /* WidgetKit.framework */; };
+		A73F2E452CD297620082F8E8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73F2E442CD297620082F8E8 /* SwiftUI.framework */; };
+		A73F2E502CD297650082F8E8 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A73F2E402CD297620082F8E8 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A73F2E4E2CD297650082F8E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F0BF912CBEC560009BD6E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A73F2E3F2CD297620082F8E8;
+			remoteInfo = WidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A73F2E512CD297650082F8E8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A73F2E502CD297650082F8E8 /* WidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A73F2E402CD297620082F8E8 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A73F2E422CD297620082F8E8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A73F2E442CD297620082F8E8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A73F2E572CD29A510082F8E8 /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
+		A7E1AF612CDA95DB0043DBCB /* iReminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iReminder.entitlements; sourceTree = "<group>"; };
 		A7F0BF992CBEC560009BD6E2 /* iReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A73611892CD53A6C0074BBA8 /* Exceptions for "Sources" folder in "WidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Extensions/Color.swift,
+				Models/TaskModel.swift,
+			);
+			target = A73F2E3F2CD297620082F8E8 /* WidgetsExtension */;
+		};
+		A73F2E542CD297650082F8E8 /* Exceptions for "Widgets" folder in "WidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A73F2E3F2CD297620082F8E8 /* WidgetsExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A7F0BF9B2CBEC560009BD6E2 /* iReminder */ = {
+		A73F2E462CD297620082F8E8 /* Widgets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = iReminder;
+			exceptions = (
+				A73F2E542CD297650082F8E8 /* Exceptions for "Widgets" folder in "WidgetsExtension" target */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		A7F0BF9B2CBEC560009BD6E2 /* Sources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A73611892CD53A6C0074BBA8 /* Exceptions for "Sources" folder in "WidgetsExtension" target */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A73F2E3D2CD297620082F8E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A73F2E452CD297620082F8E8 /* SwiftUI.framework in Frameworks */,
+				A73F2E432CD297620082F8E8 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7F0BF962CBEC560009BD6E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +102,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A73F2E412CD297620082F8E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A73F2E422CD297620082F8E8 /* WidgetKit.framework */,
+				A73F2E442CD297620082F8E8 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A7F0BF902CBEC560009BD6E2 = {
 			isa = PBXGroup;
 			children = (
-				A7F0BF9B2CBEC560009BD6E2 /* iReminder */,
+				A73F2E572CD29A510082F8E8 /* WidgetsExtension.entitlements */,
+				A7E1AF612CDA95DB0043DBCB /* iReminder.entitlements */,
+				A7F0BF9B2CBEC560009BD6E2 /* Sources */,
+				A73F2E462CD297620082F8E8 /* Widgets */,
+				A73F2E412CD297620082F8E8 /* Frameworks */,
 				A7F0BF9A2CBEC560009BD6E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				A7F0BF992CBEC560009BD6E2 /* iReminder.app */,
+				A73F2E402CD297620082F8E8 /* WidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +135,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A73F2E3F2CD297620082F8E8 /* WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A73F2E552CD297650082F8E8 /* Build configuration list for PBXNativeTarget "WidgetsExtension" */;
+			buildPhases = (
+				A73F2E3C2CD297620082F8E8 /* Sources */,
+				A73F2E3D2CD297620082F8E8 /* Frameworks */,
+				A73F2E3E2CD297620082F8E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A73F2E462CD297620082F8E8 /* Widgets */,
+			);
+			name = WidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = WidgetsExtension;
+			productReference = A73F2E402CD297620082F8E8 /* WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A7F0BF982CBEC560009BD6E2 /* iReminder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7F0BFA72CBEC561009BD6E2 /* Build configuration list for PBXNativeTarget "iReminder" */;
@@ -55,13 +164,15 @@
 				A7F0BF952CBEC560009BD6E2 /* Sources */,
 				A7F0BF962CBEC560009BD6E2 /* Frameworks */,
 				A7F0BF972CBEC560009BD6E2 /* Resources */,
+				A73F2E512CD297650082F8E8 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A73F2E4F2CD297650082F8E8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				A7F0BF9B2CBEC560009BD6E2 /* iReminder */,
+				A7F0BF9B2CBEC560009BD6E2 /* Sources */,
 			);
 			name = iReminder;
 			packageProductDependencies = (
@@ -77,9 +188,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					A73F2E3F2CD297620082F8E8 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					A7F0BF982CBEC560009BD6E2 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -100,11 +214,19 @@
 			projectRoot = "";
 			targets = (
 				A7F0BF982CBEC560009BD6E2 /* iReminder */,
+				A73F2E3F2CD297620082F8E8 /* WidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A73F2E3E2CD297620082F8E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7F0BF972CBEC560009BD6E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +237,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A73F2E3C2CD297620082F8E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7F0BF952CBEC560009BD6E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +253,79 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A73F2E4F2CD297650082F8E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A73F2E3F2CD297620082F8E8 /* WidgetsExtension */;
+			targetProxy = A73F2E4E2CD297650082F8E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		A73F2E522CD297650082F8E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = WidgetsExtension.entitlements;
+				DEVELOPMENT_TEAM = 5YH873AVKF;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.viranaikenjessy.iReminder.Widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A73F2E532CD297650082F8E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = WidgetsExtension.entitlements;
+				DEVELOPMENT_TEAM = 5YH873AVKF;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.viranaikenjessy.iReminder.Widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		A7F0BFA52CBEC561009BD6E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -185,6 +386,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -240,6 +442,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -249,9 +452,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iReminder.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iReminder/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "iReminder.entitlements Sources/Preview\\ Content";
 				DEVELOPMENT_TEAM = 5YH873AVKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -267,6 +472,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.viranaikenjessy.iReminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -278,9 +484,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iReminder.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iReminder/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "iReminder.entitlements Sources/Preview\\ Content";
 				DEVELOPMENT_TEAM = 5YH873AVKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -296,6 +504,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.viranaikenjessy.iReminder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -305,6 +514,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A73F2E552CD297650082F8E8 /* Build configuration list for PBXNativeTarget "WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A73F2E522CD297650082F8E8 /* Debug */,
+				A73F2E532CD297650082F8E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A7F0BF942CBEC560009BD6E2 /* Build configuration list for PBXProject "iReminder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

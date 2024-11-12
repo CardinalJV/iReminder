@@ -10,7 +10,7 @@ import SwiftData
 
 struct LandingView: View {
   
-  @Environment(\.modelContext) private var context
+  @Environment(\.modelContext) private var context: ModelContext
   let taskController = TaskController()
   
   @State private var showAddNewTaskView = false
@@ -61,7 +61,7 @@ struct LandingView: View {
     .sheet(isPresented: self.$showAddNewTaskView) {
       AddNewTaskView(taskController: self.taskController)
         .presentationDetents([.fraction(0.25)])
-        .onDisappear {
+        .onDisappear{
           self.showAddNewTaskView = false
         }
     }
