@@ -8,35 +8,34 @@
 import WidgetKit
 import SwiftUI
 import SwiftData
+import AppIntents
 
 struct Provider: TimelineProvider {
-  func placeholder(in context: Context) -> SimpleEntry {
-    SimpleEntry(date: Date(), tasks: [TaskModel(name: "")])
+  func placeholder(in context: Context) -> TaskEntry {
+    TaskEntry(date: Date(), tasks: [TaskModel(name: "")])
   }
   
-  func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-    let entry = SimpleEntry(date: Date(), tasks: [TaskModel(name: "")])
+  func getSnapshot(in context: Context, completion: @escaping (TaskEntry) -> ()) {
+    let entry = TaskEntry(date: Date(), tasks: [TaskModel(name: "Task 1"), TaskModel(name: "Task 2")])
     completion(entry)
   }
   
-  func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-    var entries: [SimpleEntry] = []
-    let entry = SimpleEntry(date: .now, tasks: [TaskModel(name: "")])
-    entries.append(entry)
-    
-    let timeline = Timeline(entries: entries, policy: .atEnd)
-    completion(timeline)
+  func getTimeline(in context: Context, completion: @escaping (Timeline<TaskEntry>) -> ()) {
+      let tasks: [TaskModel] = []
+      let entry = TaskEntry(date: .now, tasks: tasks)
+      let timeline = Timeline(entries: [entry], policy: .atEnd)
+      completion(timeline)
   }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct TaskEntry: TimelineEntry {
   let date: Date
   let tasks: [TaskModel]
 }
 
 struct WidgetsEntryView : View {
   
-  var entry: SimpleEntry
+  var entry: Provider.Entry
   static var taskDescriptor: FetchDescriptor<TaskModel> {
     let predicate = #Predicate<TaskModel> { !$0.isCompleted }
     var descriptor = FetchDescriptor(predicate: predicate)
@@ -48,12 +47,14 @@ struct WidgetsEntryView : View {
   var body: some View {
     VStack{
       VStack(spacing: 15){
-        ForEach(tasks, id:\.id) { task in
-          TaskItem(task: task)
+        withAnimation{
+          ForEach(tasks.sorted{ !$0.isCompleted && $1.isCompleted }, id:\.id) { task in
+            TaskItem(task: task)
           }
         }
       }
     }
+  }
 }
 
 struct Widgets: Widget {
@@ -73,6 +74,5 @@ struct Widgets: Widget {
 #Preview(as: .systemMedium) {
   Widgets()
 } timeline: {
-  SimpleEntry(date: .now, tasks: [TaskModel(name: "")])
+  TaskEntry(date: .now, tasks: [TaskModel(name: "")])
 }
-
