@@ -5,11 +5,11 @@
 //  Created by Jessy Viranaiken on 16/09/2024.
 //
 
-import Foundation
 import SwiftData
+import Foundation
 
 @Model
-class TaskModel: Identifiable {
+final class TaskModel: Identifiable {
   var id: UUID = UUID()
   var name: String
   var isCompleted: Bool = false
