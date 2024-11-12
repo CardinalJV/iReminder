@@ -35,6 +35,10 @@ Le modèle de données TaskModel permet de stocker et de récupérer des rappels
 
 L'application adopte une conception simple avec les rappels apparaissant au centre de l'écran. Un tri est effectué automatiquement pour placer en haut les rappels non complétés.
 
+- Widgets :
+
+L'application offre la possibilité de voir deux tâches non complétées via un widget.
+
 ## Détails techniques
 
 - Langages : Swift
