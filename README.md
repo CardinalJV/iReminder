@@ -42,7 +42,8 @@ L'application offre la possibilité de voir deux tâches non complétées via un
 ## Détails techniques
 
 - Langages : Swift
-- Frameworks : SwiftUI / SwiftData / WidgetKit
+- Frameworks : SwiftUI / SwiftData
+- SDK : WidgetKit
 - Architecture : MVC
 - Version iOS : iOS 17
 
