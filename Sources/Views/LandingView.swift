@@ -38,7 +38,7 @@ struct LandingView: View {
         VStack(spacing: 20){
           ForEach(self.taskController.tasks, id: \.id) { task in
             TaskItem(taskController: self.taskController, task: task)
-              .transition(.move(edge: .leading).animation(.bouncy))
+              .transition(.move(edge: .leading))
           }
         }
         .padding(.vertical)
