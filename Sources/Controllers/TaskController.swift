@@ -5,7 +5,6 @@
   //  Created by Jessy Viranaiken on 16/09/2024.
   //
 
-import Foundation
 import SwiftData
 import SwiftUI
 
