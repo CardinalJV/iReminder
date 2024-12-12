@@ -10,9 +10,13 @@ import SwiftData
 
 @main
 struct iReminderApp: App {
+  
+  @State private var taskController = TaskController()
+  
   var body: some Scene {
     WindowGroup {
       LandingView()
+        .environment(taskController)
     }
     .modelContainer(for: TaskModel.self)
   }
