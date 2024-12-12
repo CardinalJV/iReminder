@@ -9,15 +9,11 @@ import SwiftUI
 
 struct TaskItem: View {
   
-  let taskController: TaskController
-  @State var task: TaskModel
+  @Environment(TaskController.self) private var taskController
   
+  @State var task: TaskModel
   @State private var viewOffset: CGFloat = 0
   @State private var showRemoveButton = false
-  @State private var removeRow = false
-  @State private var isEditing = false
-  @State private var text = ""
-  @FocusState private var isTextFieldFocused: Bool
   
   let baseOffset: CGFloat = 0
   let deleteOffset: CGFloat = -40
