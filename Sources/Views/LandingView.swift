@@ -11,7 +11,7 @@ import SwiftData
 struct LandingView: View {
   
   @Environment(\.modelContext) var context: ModelContext
-  let taskController = TaskController()
+  @Environment(TaskController.self) private var taskController
   
   @State private var showAddNewTaskView = false
   
@@ -23,8 +23,8 @@ struct LandingView: View {
           .font(.title)
         Spacer()
         HStack{
-          Text("\(self.taskController.tasks.filter{$0.isCompleted}.count)")
-            .animation(.bouncy(duration: 1), value: self.taskController.tasks.filter{ $0.isCompleted }.count)
+          Text("\(taskController.tasks.filter{$0.isCompleted}.count)")
+            .animation(.bouncy(duration: 1), value: taskController.tasks.filter{ $0.isCompleted }.count)
           Image(systemName: "checkmark")
         }
         .bold()
@@ -36,13 +36,13 @@ struct LandingView: View {
         .frame(width: 355, height: 4)
       ScrollView{
         VStack(spacing: 20){
-          ForEach(self.taskController.tasks, id: \.id) { task in
-            TaskItem(taskController: self.taskController, task: task)
+          ForEach(taskController.tasks, id: \.id) { task in
+            TaskItem(task: task)
               .transition(.move(edge: .leading))
           }
         }
         .padding(.vertical)
-        .animation(.bouncy, value: self.taskController.tasks)
+        .animation(.bouncy, value: taskController.tasks)
       }
       Spacer()
       Button {
@@ -55,11 +55,11 @@ struct LandingView: View {
       }
     }
     .onAppear{
-      self.taskController.context = self.context
-      self.taskController.fetchTasks()
+      taskController.context = self.context
+      taskController.fetchTasks()
     }
     .sheet(isPresented: self.$showAddNewTaskView) {
-      AddNewTaskView(taskController: self.taskController)
+      AddNewTaskView(taskController: taskController)
         .presentationDetents([.fraction(0.25)])
         .onDisappear{
           self.showAddNewTaskView = false
@@ -69,6 +69,9 @@ struct LandingView: View {
 }
 
 #Preview {
+  @Previewable @State var taskController = TaskController()
+  
   LandingView()
+    .environment(taskController)
     .modelContainer(for: TaskModel.self)
 }
