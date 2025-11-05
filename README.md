@@ -29,7 +29,7 @@ A reminder can be marked as completed, with the option to hide or show completed
 
 The reminders feature an animation when they appear and disappea
 
--Data management with SwiftData:
+- Data management with SwiftData:
 
 The TaskModel data model allows for the storage and retrieval of callbacks, while the TaskController file handles all CRUD operations.
 
