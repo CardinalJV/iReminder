@@ -9,50 +9,50 @@
 
 # iReminder 
 
-iReminder est une application de gestion de rappels qui permet aux utilisateurs de créer, suivre et compléter leurs tâches. L'application utilise SwiftData pour la gestion des rappels en locales(Création, modification et suppression).
+iReminder is a reminder management application that allows users to create, track, and complete their tasks. The application uses SwiftData for local reminder management (creation, modification, and deletion).
 
 ## ScreenCast
 
 https://github.com/user-attachments/assets/2fe9ba55-65ba-4d48-9c35-a3ac01cd2267
 
-## Fonctionnalités principales
+## Main features
 
-- Ajouter des rappels :
+- Add reminders:
 
-Les utilisateurs peuvent ajouter de nouvelles tâches via une interface simple.
+Users can add new tasks via a simple interface.
 
-- Marquer les rappels comme terminés :
+- Mark the reminders as completed:
 
-Un rappel peut être marqué comme complété, avec la possibilité de masquer ou d'afficher les tâches terminées.
+A reminder can be marked as completed, with the option to hide or show completed tasks.
 
-- Animation :
+- Animation:
 
-Les rappels proposent une animation lors de l'apparition et de la suppression.
+The reminders feature an animation when they appear and disappea
 
-- Gestion des données avec SwiftData :
+-Data management with SwiftData:
 
-Le modèle de données TaskModel permet de stocker et de récupérer des rappels. Tandis que le fichier TaskController s'occupera de toutes les opérations "CRUD".
+The TaskModel data model allows for the storage and retrieval of callbacks, while the TaskController file handles all CRUD operations.
 
-- Interface utilisateur intuitive :
+- Intuitive user interface:
 
-L'application adopte une conception simple avec les rappels apparaissant au centre de l'écran. Un tri est effectué automatiquement pour placer en haut les rappels non complétés.
+The application adopts a simple design with reminders appearing in the center of the screen. Reminders are automatically sorted to place incomplete ones at the top.
 
-- Widgets :
+- Widgets:
 
-L'application offre la possibilité de voir deux tâches non complétées via un widget.
+The application offers the ability to view two uncompleted tasks via a widget.
 
-## Détails techniques
+## Technical details
 
-- Langages : Swift
-- Frameworks : SwiftUI / SwiftData
-- SDK : WidgetKit
-- Architecture : MVC
-- Version iOS : iOS 17
+- Langages: Swift
+- Frameworks: SwiftUI / SwiftData
+- SDK: WidgetKit
+- Architecture: MVC
+- Version iOS: iOS 17
 
 ## Installation
 
-Clonez le projet depuis le dépôt GitHub, puis ouvrez-le dans Xcode. Assurez-vous que vous utilisez la dernière version de Xcode compatible avec Swift 5, SwiftUI et SwiftData pour éviter tout problème de compatibilité.
+Clone the project from the GitHub repository, then open it in Xcode. Make sure you're using the latest version of Xcode that's compatible with Swift 5, SwiftUI, and SwiftData to avoid any compatibility issues.
 
-## Crédits 
+## Credits 
 
-Je me suis fortement inspiré de l'un des travaux de Shubham Singh pour le design des tâches.
+I drew heavily on one of Shubham Singh's works for the task design.
