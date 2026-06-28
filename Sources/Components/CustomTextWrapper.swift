@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomTextWrapper: View {
   
-  let taskController: TaskController
+  let taskListViewModel: TaskListViewModel
   
   @State var task: TaskModel
   @State private var isEditing = false
@@ -19,21 +19,21 @@ struct CustomTextWrapper: View {
   var body: some View {
     VStack{
       if isEditing {
-        TextField("Nom de la tache", text: self.$text)
+        TextField("Task name", text: self.$text)
           .focused($isTextFieldFocused)
           .onSubmit {
             isEditing = false
             if self.text != self.task.name {
               self.task.name = self.text
-              self.taskController.updateTasks()
+              self.taskListViewModel.updateTasks()
             }
           }
-          // Changement de focus
+          // Focus change
           .onChange(of: isTextFieldFocused) {
             if !isTextFieldFocused {
               isEditing = false
               self.task.name = self.text
-              self.taskController.updateTasks()
+              self.taskListViewModel.updateTasks()
             }
           }
           .font(.system(size: 20, weight: .semibold, design: .monospaced))

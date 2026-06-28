@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TaskItem: View {
   
-  @Environment(TaskController.self) private var taskController
+  @Environment(TaskListViewModel.self) private var taskListViewModel
   
   @State var task: TaskModel
   @State private var viewOffset: CGFloat = 0
@@ -48,7 +48,7 @@ struct TaskItem: View {
           /* Checkmark button */
           Button {
             self.task.isCompleted.toggle()
-            self.taskController.sortTasks()
+            self.taskListViewModel.sortTasks()
           } label: {
             ZStack{
               RoundedRectangle(cornerRadius: 5)
@@ -68,7 +68,7 @@ struct TaskItem: View {
           .buttonStyle(.plain)
           /* - */
           /* Task name field */
-          CustomTextWrapper(taskController: self.taskController, task: self.task)
+          CustomTextWrapper(taskListViewModel: self.taskListViewModel, task: self.task)
           /* - */
           Spacer()
         }
@@ -82,7 +82,7 @@ struct TaskItem: View {
       .gesture(dragGesture)
       if self.showRemoveButton {
         Button {
-          self.taskController.delete(this: self.task)
+          self.taskListViewModel.delete(this: self.task)
         } label: {
           Image(systemName: "multiply")
             .font(.largeTitle)

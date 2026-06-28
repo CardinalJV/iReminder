@@ -10,7 +10,7 @@ import SwiftUI
 struct AddNewTaskView: View {
   
   @Environment(\.dismiss) private var dismiss
-  let taskController: TaskController
+  let taskListViewModel: TaskListViewModel
   
   @State var text = ""
   
@@ -23,23 +23,20 @@ struct AddNewTaskView: View {
           .frame(width: 50, height: 5, alignment: .top)
       }
       .buttonStyle(.plain)
-      TextField("Ajouter un nom", text: self.$text)
+      TextField("Add a task", text: self.$text)
         .padding()
         .font(.headline)
         .frame(width: 370, height: 50)
-        .background(
-          RoundedRectangle(cornerRadius: 10)
-            .stroke(.black, lineWidth: 3)
-        )
+        .background(Color(UIColor.secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
         .multilineTextAlignment(.center)
       Button {
         if !self.text.isEmpty {
-          self.taskController.add(this: TaskModel(name: self.text))
+          self.taskListViewModel.add(this: TaskModel(name: self.text))
           self.dismiss()
         }
       } label: {
-        Text("Ajouter")
-          .fontDesign(.monospaced)
+        Text("Add")
           .font(.headline)
           .foregroundStyle(.white)
           .bold()
@@ -53,7 +50,7 @@ struct AddNewTaskView: View {
     .tint(.black)
     .onSubmit {
       if !self.text.isEmpty {
-        self.taskController.add(this: TaskModel(name: self.text))
+        self.taskListViewModel.add(this: TaskModel(name: self.text))
         self.dismiss()
       }
     }

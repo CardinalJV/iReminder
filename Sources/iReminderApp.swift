@@ -11,12 +11,14 @@ import SwiftData
 @main
 struct iReminderApp: App {
   
-  @State private var taskController = TaskController()
+  @State private var taskListViewModel = TaskListViewModel()
+  @State private var weatherViewModel = WeatherViewModel()
   
   var body: some Scene {
     WindowGroup {
       LandingView()
-        .environment(taskController)
+        .environment(taskListViewModel)
+        .environment(weatherViewModel)
     }
     .modelContainer(for: TaskModel.self)
   }

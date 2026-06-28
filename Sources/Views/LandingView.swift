@@ -11,7 +11,8 @@ import SwiftData
 struct LandingView: View {
   
   @Environment(\.modelContext) var context: ModelContext
-  @Environment(TaskController.self) private var taskController
+  @Environment(TaskListViewModel.self) private var taskListViewModel
+  @Environment(WeatherViewModel.self) private var weatherViewModel
   
   @State private var showAddNewTaskView = false
   
@@ -22,10 +23,18 @@ struct LandingView: View {
           .bold()
           .font(.title)
         Spacer()
-        HStack{
-          Text("\(taskController.tasks.filter{$0.isCompleted}.count)")
-            .animation(.bouncy(duration: 1), value: taskController.tasks.filter{ $0.isCompleted }.count)
-          Image(systemName: "checkmark")
+        HStack(spacing: 14){
+          HStack(spacing: 8){
+            Text("\(taskListViewModel.tasks.filter{$0.isCompleted}.count)")
+              .animation(.bouncy(duration: 1), value: taskListViewModel.tasks.filter{ $0.isCompleted }.count)
+            Image(systemName: "checkmark")
+          }
+          HStack(spacing: 5){
+            Image(systemName: weatherViewModel.symbolName)
+              .foregroundStyle(.black)
+            Text(weatherViewModel.temperatureText)
+          }
+          .padding(.leading, 4)
         }
         .bold()
         .font(.title3)
@@ -36,13 +45,13 @@ struct LandingView: View {
         .frame(width: 355, height: 4)
       ScrollView{
         VStack(spacing: 20){
-          ForEach(taskController.tasks, id: \.id) { task in
+          ForEach(taskListViewModel.tasks, id: \.id) { task in
             TaskItem(task: task)
               .transition(.move(edge: .leading))
           }
         }
         .padding(.vertical)
-        .animation(.bouncy, value: taskController.tasks)
+        .animation(.bouncy, value: taskListViewModel.tasks)
       }
       Spacer()
       Button {
@@ -55,11 +64,12 @@ struct LandingView: View {
       }
     }
     .onAppear{
-      taskController.context = self.context
-      taskController.fetchTasks()
+      taskListViewModel.context = self.context
+      taskListViewModel.fetchTasks()
+      weatherViewModel.requestWeather()
     }
     .sheet(isPresented: self.$showAddNewTaskView) {
-      AddNewTaskView(taskController: taskController)
+      AddNewTaskView(taskListViewModel: taskListViewModel)
         .presentationDetents([.fraction(0.25)])
         .onDisappear{
           self.showAddNewTaskView = false
@@ -69,9 +79,11 @@ struct LandingView: View {
 }
 
 #Preview {
-  @Previewable @State var taskController = TaskController()
+  @Previewable @State var taskListViewModel = TaskListViewModel()
+  @Previewable @State var weatherViewModel = WeatherViewModel()
   
   LandingView()
-    .environment(taskController)
+    .environment(taskListViewModel)
+    .environment(weatherViewModel)
     .modelContainer(for: TaskModel.self)
 }

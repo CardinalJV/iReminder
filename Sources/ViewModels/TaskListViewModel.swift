@@ -1,5 +1,5 @@
   //
-  //  TaskController.swift
+  //  TaskListViewModel.swift
   //  iReminder
   //
   //  Created by Jessy Viranaiken on 16/09/2024.
@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 @Observable
-class TaskController{
+final class TaskListViewModel {
   
   var tasks: [TaskModel] = []
   var context: ModelContext?
@@ -17,7 +17,7 @@ class TaskController{
     //  Create
   func add(this task: TaskModel) {
     guard let context = self.context else {
-      print("Context indisponible")
+      print("Context unavailable")
       return
     }
     do {
@@ -25,7 +25,7 @@ class TaskController{
       try context.save()
       fetchTasks()
     } catch {
-      print("Erreur lors de l'ajout : \(error)")
+      print("Error while adding task: \(error)")
     }
   }
     //  Read
@@ -36,26 +36,26 @@ class TaskController{
         self.tasks = fetchedTasks
       }
     } catch {
-      print("Erreur lors de la récupération des taches: \(error)")
+      print("Error while fetching tasks: \(error)")
     }
   }
     //  Update
   func updateTasks() {
     guard let context = self.context else {
-      print("Context indisponible")
+      print("Context unavailable")
       return
     }
     do {
       try context.save()
       fetchTasks()
     } catch {
-      print("Erreur lors de la sauvegarde: \(error)")
+      print("Error while saving tasks: \(error)")
     }
   }
     //  Delete
   func delete(this task: TaskModel) {
     guard let context = self.context else {
-      print("Context indisponible")
+      print("Context unavailable")
       return
     }
     do {
@@ -63,7 +63,7 @@ class TaskController{
       try context.save()
       fetchTasks()
     } catch {
-      print("Erreur lors de la suppression: \(error)")
+      print("Error while deleting task: \(error)")
     }
   }
   
