@@ -10,7 +10,7 @@ import WeatherKit
 @Observable
 final class WeatherViewModel: NSObject, CLLocationManagerDelegate {
   var symbolName = "cloud"
-  var temperatureText = "--°"
+  var temperatureText = "--"
   
   @ObservationIgnored private let locationManager = CLLocationManager()
   @ObservationIgnored private let weatherService = WeatherService.shared
@@ -27,7 +27,7 @@ final class WeatherViewModel: NSObject, CLLocationManagerDelegate {
   
   private func applyMockWeather() {
     symbolName = "sun.max"
-    temperatureText = "24°"
+    temperatureText = "24"
   }
   
   func requestWeather() {

@@ -13,8 +13,14 @@ final class TaskModel: Identifiable {
   var id: UUID = UUID()
   var name: String
   var isCompleted: Bool = false
+  var scheduledTime: Date?
+  var taskType: String?
+  var isUrgent: Bool?
   
-  init(name: String) {
+  init(name: String, scheduledTime: Date? = nil, taskType: String? = nil, isUrgent: Bool? = nil) {
     self.name = name
+    self.scheduledTime = scheduledTime
+    self.taskType = taskType
+    self.isUrgent = isUrgent
   }
 }

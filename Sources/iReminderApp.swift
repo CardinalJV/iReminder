@@ -16,9 +16,11 @@ struct iReminderApp: App {
   
   var body: some Scene {
     WindowGroup {
-      LandingView()
-        .environment(taskListViewModel)
-        .environment(weatherViewModel)
+      NavigationStack {
+        LandingView()
+      }
+      .environment(taskListViewModel)
+      .environment(weatherViewModel)
     }
     .modelContainer(for: TaskModel.self)
   }

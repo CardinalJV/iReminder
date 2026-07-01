@@ -52,13 +52,13 @@ struct TaskItem: View {
           } label: {
             ZStack{
               RoundedRectangle(cornerRadius: 5)
-                .stroke(.black, lineWidth: 5)
-                .fill(self.task.isCompleted ? .black : .white)
+                .stroke(Color.label, lineWidth: 5)
+                .fill(self.task.isCompleted ? Color.label : Color.background)
                 .animation(self.task.isCompleted ? .easeOut(duration: 0.3) : .default, value: self.task.isCompleted)
                 .frame(width: 30, height: 30)
               if (self.task.isCompleted) {
                 Image(systemName: "checkmark")
-                  .foregroundStyle(.white)
+                  .foregroundStyle(Color.background)
                   .frame(width: 24, height: 24)
                   .bold()
                   .animation(.easeInOut(duration: 0.25), value: self.task.isCompleted)
@@ -69,8 +69,10 @@ struct TaskItem: View {
           /* - */
           /* Task name field */
           CustomTextWrapper(taskListViewModel: self.taskListViewModel, task: self.task)
+            .frame(maxWidth: .infinity, alignment: .leading)
           /* - */
-          Spacer()
+          TaskTagsView(task: self.task)
+            .frame(width: 58, alignment: .trailing)
         }
         .padding(14)
         RoundedRectangle(cornerRadius: 8)
@@ -95,5 +97,52 @@ struct TaskItem: View {
         .frame(width: 32, height: 32)
       }
     }
+  }
+}
+
+private struct TaskTagsView: View {
+  let task: TaskModel
+  
+  private var timeText: String? {
+    task.scheduledTime?.formatted(date: .omitted, time: .shortened)
+  }
+  
+  var body: some View {
+    VStack(spacing: 4) {
+      if let timeText {
+        TaskTag(text: "#\(timeText)", color: Color(UIColor.darkGray))
+      }
+      if let taskType = task.taskType {
+        TaskTag(text: "#\(taskType)", color: Color(UIColor.darkGray))
+      }
+      if task.isUrgent == true {
+        TaskTag(text: "Urgent", color: .red)
+      }
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+  }
+}
+
+private struct TaskTag: View {
+  let text: String
+  let color: Color
+  
+  var body: some View {
+    ZStack {
+      RoundedRectangle(cornerRadius: 4)
+        .fill(color)
+      Text(text)
+        .font(.body)
+        .fontDesign(.monospaced)
+        .fontWeight(.heavy)
+        .lineLimit(1)
+        .minimumScaleFactor(0.45)
+        .allowsTightening(true)
+        .foregroundStyle(.white)
+        .padding(3)
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+    .frame(width: 50, height: 20, alignment: .leading)
+    .shadow(color: .black.opacity(0.32), radius: 3, x: 0, y: 2)
   }
 }

@@ -12,34 +12,56 @@ struct AddNewTaskView: View {
   @Environment(\.dismiss) private var dismiss
   let taskListViewModel: TaskListViewModel
   
-  @State var text = ""
+  @State private var text = ""
+  @State private var includesTime = false
+  @State private var scheduledTime = Date()
+  @State private var includesType = false
+  @State private var selectedType = "Home"
+  @State private var isUrgent = false
+  
+  private let taskTypes = ["Home", "Work", "Personal"]
   
   var body: some View {
-    VStack(spacing: 20){
-      Button {
-        self.dismiss()
-      } label: {
-        RoundedRectangle(cornerRadius: 5)
-          .frame(width: 50, height: 5, alignment: .top)
-      }
-      .buttonStyle(.plain)
-      TextField("Add a task", text: self.$text)
+    VStack(spacing: 14){
+      TextField("Write a task", text: self.$text)
         .padding()
         .font(.headline)
         .frame(width: 370, height: 50)
-        .background(Color(UIColor.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
         .multilineTextAlignment(.center)
-      Button {
-        if !self.text.isEmpty {
-          self.taskListViewModel.add(this: TaskModel(name: self.text))
-          self.dismiss()
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+      
+      VStack(spacing: 10) {
+        Toggle("Time", isOn: $includesTime)
+        if includesTime {
+          DatePicker("", selection: $scheduledTime, displayedComponents: .hourAndMinute)
+            .datePickerStyle(.compact)
+            .labelsHidden()
         }
+        
+        Toggle("Type", isOn: $includesType)
+        if includesType {
+          Picker("Type", selection: $selectedType) {
+            ForEach(taskTypes, id: \.self) { type in
+              Text(type).tag(type)
+            }
+          }
+          .pickerStyle(.segmented)
+        }
+        
+        Toggle("Urgent", isOn: $isUrgent)
+          .tint(.red)
+      }
+      .font(.body)
+      .frame(width: 370)
+      
+      Button {
+        addTaskIfNeeded()
       } label: {
         Text("Add")
-          .font(.headline)
-          .foregroundStyle(.white)
+          .font(.body)
           .bold()
+          .foregroundStyle(.white)
           .frame(width: 375, height: 50)
           .background(.black)
           .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -49,10 +71,20 @@ struct AddNewTaskView: View {
     .fontDesign(.monospaced)
     .tint(.black)
     .onSubmit {
-      if !self.text.isEmpty {
-        self.taskListViewModel.add(this: TaskModel(name: self.text))
-        self.dismiss()
-      }
+      addTaskIfNeeded()
     }
+  }
+  
+  private func addTaskIfNeeded() {
+    guard !self.text.isEmpty else { return }
+    
+    let task = TaskModel(
+      name: self.text,
+      scheduledTime: includesTime ? scheduledTime : nil,
+      taskType: includesType ? selectedType : nil,
+      isUrgent: isUrgent ? true : nil
+    )
+    self.taskListViewModel.add(this: task)
+    self.dismiss()
   }
 }
